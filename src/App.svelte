@@ -1,8 +1,12 @@
 <script>
+  import Header from "./components/Header.svelte";
+  import CountryList from "./components/CountryList.svelte";
+  import Footer from "./components/Footer.svelte";
+
   const regionNamesInJapan = new Intl.DisplayNames(['ja'], { type: 'region' });
   const regionNamesInTraditionalChinese = new Intl.DisplayNames(['zh-Hant'], { type: 'region' });
-  console.log(regionNamesInTraditionalChinese.of('ES'));
-  console.log(regionNamesInJapan.of('ES'));
+  // console.log(regionNamesInTraditionalChinese.of('ES'));
+  // console.log(regionNamesInJapan.of('ES'));
   // console.log(regionNamesInTraditionalChinese.of('UK'));
   // console.log(regionNamesInJapan.of('UK'));
   // console.log(regionNamesInTraditionalChinese.of('DE'));
@@ -18,9 +22,12 @@
   // console.log(regionNamesInJapan.of('SV'));
 </script>
 
+<Header/>
 <main>
-  
+  <h1>How do you say this country in china???</h1>
+  <CountryList/>
 </main>
+<Footer/>
 
 <style>
   
