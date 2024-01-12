@@ -2,18 +2,32 @@
 <script>
     import Header from "../components/Header.svelte";
     import Footer from "../components/Footer.svelte";
+  import Gist from "../lib/Gist.svelte";
 </script>
 <!-- +++++ end +++++ -->
 <!-- end -->
 <!-- +++++ html +++++ -->
-<Header/>
+<div class="flex_center">
+    <Header/>
+    <div class="search_box">
+        <input type="text" placeholder="input this..." class="">
+        <button type="submit">
+            search
+        </button>
+    </div>
+</div>
 <main>
     <h1>coutry list</h1>
+    <Gist gistURL="https://gist.github.com/arthur87/5a55aecbe9eb445502aac3193f8e6e80" />
 </main>
 <Footer/>
 <!-- +++++ end +++++ -->
 <!-- +++++ css +++++ -->
 <style>
-    
+    .flex_center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
 <!-- +++++ end +++++ -->
