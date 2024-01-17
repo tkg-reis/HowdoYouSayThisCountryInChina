@@ -3,7 +3,6 @@
     import Header from "../components/Header.svelte";
     import Footer from "../components/Footer.svelte";
     import Gist from "../lib/Gist.svelte";
-    import Search from "../lib/Search.svelte";
     
 
 </script>
@@ -12,7 +11,6 @@
 <!-- +++++ html +++++ -->
 <div class="flex_center">
     <Header/>
-    <Search/>
 </div>
 <main>
     <h1>coutry list</h1>
