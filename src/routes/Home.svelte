@@ -1,25 +1,30 @@
 <!-- +++++ js +++++ -->
 <script>
-    import Header from "../components/Header.svelte";
-    import Footer from "../components/Footer.svelte";
-    
-    const regionNamesInJapan = new Intl.DisplayNames(['ja'], { type: 'region' });
-    const regionNamesInTraditionalChinese = new Intl.DisplayNames(['zh-Hant'], { type: 'region' });
-  // console.log(regionNamesInTraditionalChinese.of('ES'));
-  // console.log(regionNamesInJapan.of('ES'));
-  // console.log(regionNamesInTraditionalChinese.of('UK'));
-  // console.log(regionNamesInJapan.of('UK'));
-  // console.log(regionNamesInTraditionalChinese.of('DE'));
-  // console.log(regionNamesInJapan.of('DE'));
-  // console.log(regionNamesInTraditionalChinese.of('JP'));
-  // console.log(regionNamesInTraditionalChinese.of('KR'));
-  // console.log(regionNamesInJapan.of('KR'));
-  // console.log(regionNamesInTraditionalChinese.of('RU'));
-  // console.log(regionNamesInJapan.of('RU'));
-  // console.log(regionNamesInTraditionalChinese.of('SD'));
-  // console.log(regionNamesInJapan.of('SD'));
-  // console.log(regionNamesInTraditionalChinese.of('SV'));
-  // console.log(regionNamesInJapan.of('SV'));
+// @ts-nocheck
+
+  import Header from "../components/Header.svelte";
+  import Footer from "../components/Footer.svelte";
+  import { iso31661 } from 'iso-3166'
+
+  const regionNamesInTraditionalChinese = new Intl.DisplayNames(['zh-Hant'], { type: 'region' });
+  const regionNamesInJapan = new Intl.DisplayNames(['ja'], { type: 'region' });
+
+  function getRandomNumber(min ,  max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  let setRandomNumber = getRandomNumber(1, 249); 
+  let setRandomCountryCode = iso31661[setRandomNumber].alpha2;
+
+  let chineseName;
+  let changeHandler = (val) => {
+    chineseName = regionNamesInTraditionalChinese.of(val);
+  }
+  
+  let japanName;
+  let answerHandler = (val) => {
+    japanName = regionNamesInJapan.of(val);
+  }
+  
 </script>
 <!-- +++++ end +++++ -->
 <!-- end -->
@@ -27,11 +32,48 @@
 <Header/>
 <main>
   <h1>How do you say this country in china???</h1>
+
+  <p class="outputName" on:load={changeHandler(setRandomCountryCode)}>{chineseName}</p>
+  <div class="outputAnswerWrap">
+    <button class="outputAnswer" on:click={() => answerHandler(setRandomCountryCode)}>{japanName === undefined ? "答え" : japanName}</button>
+  </div>
+  <div class="nextButtonWrap">
+    <button type="button" on:click={() => changeHandler(setRandomCountryCode)} class="nextButton">next</button>
+  </div>
 </main>
 <Footer/>
 <!-- +++++ end +++++ -->
 <!-- +++++ css +++++ -->
 <style>
+    .outputAnswerWrap {
+      text-align: center;
+    }
+    .outputName {
+      text-align: center;
+      font-size: 24px;
+      margin: 24px;
+    }
+
+
+    .nextButtonWrap {
+      text-align: center;
+    }
     
+    .nextButton {
+      padding: 8px 16px;
+
+    }
+
+    .outputAnswer {
+      text-align: center;
+      margin: 16px;
+      border: none;
+      background: #fafafa;
+      box-shadow: 2px 2px 4px #333;
+    }
+
+    /* .fadeDisplay {
+      opacity: 0;
+    } */
 </style>
 <!-- +++++ end +++++ -->
