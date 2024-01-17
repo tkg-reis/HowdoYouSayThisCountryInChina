@@ -2,23 +2,26 @@
 <script>
     import Header from "../components/Header.svelte";
     import Footer from "../components/Footer.svelte";
-  import Gist from "../lib/Gist.svelte";
+    import Gist from "../lib/Gist.svelte";
+    import Search from "../lib/Search.svelte";
+    
+
 </script>
 <!-- +++++ end +++++ -->
 <!-- end -->
 <!-- +++++ html +++++ -->
 <div class="flex_center">
     <Header/>
-    <div class="search_box">
-        <input type="text" placeholder="input this..." class="">
-        <button type="submit">
-            search
-        </button>
-    </div>
+    <Search/>
 </div>
 <main>
     <h1>coutry list</h1>
     <Gist gistURL="https://gist.github.com/arthur87/5a55aecbe9eb445502aac3193f8e6e80" />
+    <!-- {#each  as }
+        {#if }
+            該当する文字ならcoloringRedコンポーネントで囲む
+        {/if}
+    {/each} -->
 </main>
 <Footer/>
 <!-- +++++ end +++++ -->

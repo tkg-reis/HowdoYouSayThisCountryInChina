@@ -1,7 +1,6 @@
 <script>
   // @ts-ignore
   import { Router, Route } from "svelte-routing";
-
   import Home from "./routes/Home.svelte";
   import CountryList from "./routes/CountryList.svelte";
   import Opinion from "./routes/Opinion.svelte";
